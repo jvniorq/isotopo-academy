@@ -1,4 +1,4 @@
-import {courses,areas} from "./data.js";
+import {courses,areas} from "./data.js?v=1.0.1";
 export {courses,areas};
 export const normalize = value => String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
 export const areaFor = id => areas.find(a=>a.id===id) || areas[0];

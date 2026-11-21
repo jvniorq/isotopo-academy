@@ -1,5 +1,5 @@
-import {icon,fieldArt} from "./graphics.js";
-import {courses,areas,areaFor,costLabel,routes} from "./catalog.js";
+import {icon,fieldArt} from "./graphics.js?v=1.0.1";
+import {courses,areas,areaFor,costLabel,routes} from "./catalog.js?v=1.0.1";
 export const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 export function card(c,saved=new Set(),animate=true){
  const area=areaFor(c.area),isSaved=saved.has(c.id);
