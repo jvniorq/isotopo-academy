@@ -109,7 +109,7 @@ export const courses = [
     "provider": "Universidad Nacional de San Martín",
     "level": "Inicial",
     "language": "Español",
-    "url": "https://github.com/python-unsam/Programacion_en_Python",
+    "url": "https://github.com/python-unsam/Programacion_en_Python_UNSAM",
     "description": "Aprende a programar y a trabajar con datos; una herramienta esencial para la investigación científica.",
     "topics": [
       "Estructuras de datos",
@@ -121,13 +121,14 @@ export const courses = [
     "availability": "A tu ritmo",
     "format": "Autoestudio",
     "hours": null,
-    "prerequisites": "Consulta los conocimientos previos en la institución de origen.",
-    "sourceStatus": "Material abierto",
+    "prerequisites": "Se recomienda alguna experiencia previa en programación. No se exige conocer Python.",
+    "sourceStatus": "Material abierto de una edición anterior",
     "checkedAt": "2026-11-21",
     "tags": [
       "código",
       "datos"
-    ]
+    ],
+    "note": "Material de una edición anterior disponible para autoestudio. La institución indica que esta cursada virtual no se está dictando actualmente."
   },
   {
     "id": 4,
