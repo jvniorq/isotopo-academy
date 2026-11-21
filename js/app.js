@@ -143,7 +143,7 @@ document.addEventListener("click",async event=>{
   if(target.hasAttribute("data-clear-filters")){saveCatalogState({});await render();}
   if(target.dataset.removeFilter){const s=catalogState();delete s[target.dataset.removeFilter];delete s.page;saveCatalogState(s);await render();}
   if(target.dataset.page){const s=catalogState();s.page=target.dataset.page;saveCatalogState(s);updateCatalog();document.querySelector(".results-toolbar").scrollIntoView({behavior:"instant",block:"start"});document.querySelector("#result-count").tabIndex=-1;document.querySelector("#result-count").focus({preventScroll:true});}
-  if(target.id==="filter-toggle"){const open=target.getAttribute("aria-expanded")==="true";target.setAttribute("aria-expanded",String(!open));document.querySelector("#catalog-filters").classList.toggle("is-open",!open);}
+  if(target.id==="filter-toggle"){const open=target.getAttribute("aria-expanded")==="true";target.setAttribute("aria-expanded",String(!open));document.querySelector("#catalog-filters").classList.toggle("open",!open);}
   if(target.hasAttribute("data-password-toggle")){const input=document.querySelector("#account-password"),show=input.type==="password";input.type=show?"text":"password";target.setAttribute("aria-label",show?"Ocultar contraseña":"Mostrar contraseña");target.setAttribute("aria-pressed",String(show));}
   if(target.dataset.learningTab){dashboardTab=target.dataset.learningTab;await render();}
   if(target.hasAttribute("data-clear-saved")){if(!writeStorage("isotopo:saved",[]))throw new Error("No se pudieron borrar los favoritos.");saved.clear();await render();toast("Favoritos borrados de este navegador.");}
