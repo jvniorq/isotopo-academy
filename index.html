@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b2029">
+<meta name="description" content="Explora 40 cursos de ingeniería nuclear, física médica, metrología, reactores e investigación. Encuentra tu especialidad y construye tu ruta de aprendizaje.">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_ES"><meta property="og:title" content="Isótopo — Conocimiento que transforma"><meta property="og:description" content="40 cursos y siete áreas para explorar la ingeniería nuclear.">
+<title>Isótopo — Conocimiento que transforma</title>
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://api.fontshare.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="./styles.css" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
+<script type="module" src="./js/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a><div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header"><div class="nav-wrap">
+<a href="#/" class="brand" aria-label="Isótopo, inicio"><svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><ellipse cx="18" cy="18" rx="15" ry="7" transform="rotate(-45 18 18)" stroke="currentColor" stroke-width="1.5"/><ellipse cx="18" cy="18" rx="15" ry="7" transform="rotate(45 18 18)" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18" r="3.3" fill="currentColor"/></svg><span>isótopo<span class="brand-dot">.</span></span></a>
+<nav class="desktop-nav" aria-label="Navegación principal"><a href="#/cursos" data-nav="cursos">Explorar cursos</a><a href="#/especialidades" data-nav="especialidades">Especialidades</a><a href="#/rutas" data-nav="rutas">Rutas de aprendizaje</a></nav>
+<div class="nav-actions"><a href="#/mi-aprendizaje" class="icon-button saved-nav" aria-label="Mis cursos guardados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 4h12v17l-6-4-6 4z"/></svg></a><a class="login-link" href="#/acceso" id="account-link">Iniciar sesión</a><a href="#/registro" class="button button-small button-mint" id="join-link">Crear cuenta</a><button class="icon-button mobile-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></div>
+<nav id="mobile-menu" class="mobile-menu" aria-label="Navegación móvil" hidden><a href="#/cursos">Explorar cursos</a><a href="#/especialidades">Especialidades</a><a href="#/rutas">Rutas de aprendizaje</a><a href="#/mi-aprendizaje">Mi aprendizaje</a><a href="#/acceso">Iniciar sesión</a></nav>
+</header>
+<main id="main" tabindex="-1"><div class="initial-loading"><span class="loading-orbit" aria-hidden="true"></span><p>Preparando tu próximo descubrimiento…</p></div></main>
+<footer class="site-footer"><div class="container footer-top"><div><a href="#/" class="brand"><span>isótopo<span class="brand-dot">.</span></span></a><p>Conocimiento para comprender.<br>Ingeniería para transformar.</p></div><div><p class="footer-label">EXPLORA</p><a href="#/cursos">Todos los cursos</a><a href="#/especialidades">Especialidades</a><a href="#/rutas">Rutas de aprendizaje</a></div><div><p class="footer-label">TU ESPACIO</p><a href="#/mi-aprendizaje">Mi aprendizaje</a><a href="#/registro">Crear cuenta</a><a href="#/acerca">Acerca de Isótopo</a></div><div><p class="footer-label">A TU MANERA</p><button id="motion-toggle" class="text-button" aria-pressed="false">Reducir movimiento</button><a href="#/privacidad">Privacidad</a><a href="#/fuentes">Fuentes y metodología</a></div></div><div class="container footer-bottom"><span>© 2026 Isótopo. Un espacio para seguir aprendiendo.</span><span>Curiosidad en movimiento.</span></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<noscript><div class="noscript">Activa JavaScript para utilizar el catálogo y los filtros. Puedes consultar los <a href="https://github.com/jvniorq/isotopo-academy/blob/main/data/courses.json">40 cursos y sus fuentes en GitHub</a>.</div></noscript>
+</body></html>
