@@ -32,7 +32,7 @@ export function fieldArt(type="fisica",hero=false){
   lines+='<path d="M100 280h440M320 75v420" stroke-dasharray="3 9"/><circle cx="320" cy="280" r="185" opacity=".4"/>';
  }else if(type==="investigacion"||type==="instrumentacion"){
   for(let k=0;k<19;k++){
-   const points=[];for(let x=70;x<=575;x+=4)points.push(p(x,220+k*6+Math.sin(x/28+k*.22)*Math.exp(-((x-320)/150)**2)*112));
+   const points=[];for(let x=70;x<=575;x+=4)points.push(p(x,220+k*6+Math.sin(x/28+k*.22)*Math.exp(-(((x-320)/150)**2))*112));
    lines+='<polyline points="'+points.join(" ")+'" opacity="'+(.3+k*.03)+'"/>';
   }
  }else{
