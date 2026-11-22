@@ -1,9 +1,9 @@
-import {courses,areas,routes,areaFor,costLabel,filterCourses} from "./catalog.js?v=1.0.2";
-import {icon,fieldArt} from "./graphics.js?v=1.0.2";
-import {esc,card,empty,pageTop,home,specialtiesPage,routesPage,readingPage} from "./ui.js?v=1.0.2";
-import {readStorage,writeStorage,startAnimations,stopAnimations,scrollTop,initMotion} from "./animations.js?v=1.0.2";
-import * as auth from "./auth.js?v=1.0.2";
-import {config} from "./config.js?v=1.0.2";
+import {courses,areas,routes,areaFor,costLabel,filterCourses} from "./catalog.js?v=1.0.4";
+import {icon,fieldArt} from "./graphics.js?v=1.0.4";
+import {esc,card,empty,pageTop,home,specialtiesPage,routesPage,readingPage} from "./ui.js?v=1.0.4";
+import {readStorage,writeStorage,startAnimations,stopAnimations,scrollTop,initMotion} from "./animations.js?v=1.0.4";
+import * as auth from "./auth.js?v=1.0.4";
+import {config} from "./config.js?v=1.0.4";
 
 const main=document.querySelector("#main");
 const knownIds=new Set(courses.map(c=>c.id));

@@ -1,4 +1,4 @@
-import {config} from "./config.js?v=1.0.2";
+import {config} from "./config.js?v=1.0.4";
 export const authEnabled = config.accountsEnabled === true && /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(config.supabaseUrl) && config.supabasePublishableKey.length>20 && Boolean(config.privacyContact);
 let clientPromise,currentUser=null;
 export const getUser=()=>currentUser;
