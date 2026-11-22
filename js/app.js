@@ -173,8 +173,8 @@ document.addEventListener("submit",async event=>{
  const form=event.target,data=new FormData(form),mode=form.dataset.mode,button=form.querySelector('[type="submit"]'),message=document.querySelector("#form-message");
  button.disabled=true;message.className="form-message";message.textContent="Un momento…";
  try{
-  if(mode==="registro"){const active=await auth.signUp(String(data.get("name")).trim(),String(data.get("email")).trim(),String(data.get("password")));message.textContent=active?"Cuenta creada.":"Revisa tu correo para confirmar la cuenta. Si ya tenías una, puedes iniciar sesión.";if(active)location.hash="#/mi-aprendizaje";}
-  else if(mode==="recuperar"){await auth.resetPassword(String(data.get("email")).trim());message.textContent="Si el correo está registrado, recibirás un enlace para recuperar el acceso.";}
+  if(mode==="registro"){const active=await auth.signUp(String(data.get("name")).trim(),String(data.get("email")).trim(),String(data.get("password")));message.textContent=active?"Cuenta creada.":"Revisa tu correo y abre el enlace en este mismo navegador para confirmar la cuenta. Si ya tenías una, puedes iniciar sesión.";if(active)location.hash="#/mi-aprendizaje";}
+  else if(mode==="recuperar"){await auth.resetPassword(String(data.get("email")).trim());message.textContent="Si el correo está registrado, recibirás un enlace para recuperar el acceso. Ábrelo en este mismo navegador.";}
   else if(mode==="nueva-clave"){await auth.updatePassword(String(data.get("password")));toast("Contraseña actualizada.");history.replaceState(null,"",location.pathname+"#/mi-aprendizaje");await render();}
   else{await auth.signIn(String(data.get("email")).trim(),String(data.get("password")));location.hash="#/mi-aprendizaje";}
   form.reset();
