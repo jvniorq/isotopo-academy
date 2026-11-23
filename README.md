@@ -12,7 +12,7 @@ Plataforma en español para explorar 40 cursos relacionados con ingeniería nucl
 - Buscador tolerante a acentos y filtros combinables por área, costo, nivel, idioma, duración, certificado, institución, formato y disponibilidad.
 - Filtros compartibles mediante URL, paginación, fichas y enlaces a instituciones.
 - Favoritos en el navegador; interfaz de registro, acceso y recuperación.
-- Integración preparada para autenticación real, progreso y favoritos sincronizados mediante Supabase.
+- Autenticación, progreso y favoritos sincronizados mediante Supabase; pruebas integrales de cuenta en curso.
 - SQL con políticas de acceso por usuario y carga inicial de 40 cursos.
 - Validación de sintaxis y pruebas del catálogo dentro de GitHub Actions.
 
@@ -20,7 +20,7 @@ Plataforma en español para explorar 40 cursos relacionados con ingeniería nucl
 
 El proyecto Supabase ya está creado y contiene 40 cursos y 40 guías de estudio. Las políticas de acceso se probaron en la base real: cada usuario accede solo a su aprendizaje y los visitantes no pueden leer las guías mediante la API. Las URLs de confirmación y recuperación están configuradas y la contraseña exige al menos 12 caracteres.
 
-El registro público **todavía no está activado**: falta configurar y verificar el correo transaccional, publicar el contacto de privacidad y probar los flujos completos con una cuenta. Los formularios lo indican y no envían credenciales mientras `accountsEnabled` sea `false`. Consulta [Activar cuentas](docs/ACTIVAR-CUENTAS.md).
+El SMTP de Brevo está configurado, las plantillas de correo están aplicadas y el contacto de privacidad está publicado. El registro se habilita **para la prueba integral**: falta comprobar la entrega y los flujos completos con una cuenta. Si falla la prueba, se deshabilitará el registro hasta corregirlo. Consulta [Activar cuentas](docs/ACTIVAR-CUENTAS.md).
 
 Los cursos originales pertenecen a sus instituciones. Isótopo organiza metadatos y guías editoriales; no vende acceso, no reproduce cursos completos ni emite certificados.
 

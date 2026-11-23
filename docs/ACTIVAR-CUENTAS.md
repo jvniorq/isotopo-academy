@@ -1,8 +1,8 @@
 # Activar cuentas reales sin instalar nada
 
-La web pública funciona desde GitHub Pages. El catálogo, filtros, rutas y favoritos locales están activos. La base Supabase ya está preparada; el registro público permanece deshabilitado mientras se termina la entrega de correo y la prueba integral.
+La web pública funciona desde GitHub Pages. El catálogo, filtros, rutas y favoritos locales están activos. La base Supabase y el SMTP de Brevo están configurados. El registro se habilita para la prueba integral; falta comprobar la entrega real y los flujos con una cuenta.
 
-## Estado verificado — 22 de noviembre de 2026
+## Estado verificado — 23 de noviembre de 2026
 
 - Proyecto `isotopo-academy`, referencia `vbclpnsiotynzghgygxz`, región São Paulo, plan Free.
 - Esquema aplicado: `courses`, `learning` y `course_resources`, con Row Level Security.
@@ -12,20 +12,28 @@ La web pública funciona desde GitHub Pages. El catálogo, filtros, rutas y favo
 - Site URL: https://jvniorq.github.io/isotopo-academy/
 - Redirecciones permitidas: esa misma URL y https://jvniorq.github.io/isotopo-academy/?recovery=1
 - Email/Password habilitado en Supabase, confirmación de correo activada y longitud mínima de contraseña: 12 caracteres.
-- Remitente verificado en Brevo: **Isótopo Academy**, correo autorizado por el propietario: oswer9905@gmail.com. La cuenta dispone de 300 envíos diarios. Falta verificar teléfono, crear una clave SMTP y probar la entrega.
+- Remitente verificado en Brevo: **Isótopo Academy**, correo autorizado por el propietario: oswer9905@gmail.com. La cuenta dispone de 300 envíos diarios. Identidad y teléfono verificados; el propietario creó la clave SMTP y la guardó directamente en Supabase. El panel confirma SMTP activado y contraseña almacenada. La entrega real aún debe probarse.
 - Contacto de privacidad publicado con autorización: oswer9905@gmail.com.
 - URL y clave publicable guardadas en [config.js](../js/config.js). No son secretos.
-- `accountsEnabled: false` mantiene los formularios inactivos hasta completar las comprobaciones restantes. Esta bandera controla la interfaz; la protección real de los datos corresponde a Auth, los permisos SQL y RLS.
+- Plantillas de confirmación y recuperación aplicadas en Supabase y revisadas en su previsualización.
+- Brevo: seguimiento anónimo seleccionado y consentimiento por contacto activado; no se rastrean contactos cuyo consentimiento es desconocido. Revisar también los enlaces del mensaje recibido.
+- `accountsEnabled: true` habilita los formularios para la prueba integral. Si falla la entrega o el acceso, volver a `false` hasta corregirlo. Esta bandera controla la interfaz; la protección real de los datos corresponde a Auth, los permisos SQL y RLS.
 
-## Pendiente para abrir el registro
+## Validación pendiente
 
-1. Configurar correo transaccional en Authentication → Emails → SMTP Settings. El correo de prueba incluido en Supabase solo admite direcciones del equipo del proyecto y no sirve para el registro general de estudiantes.
-2. Mantener el proyecto sin gastos, según la decisión del propietario. Se propone probar Brevo Free (300 mensajes diarios según su documentación consultada el 22/11/2026). Sin dominio propio, Brevo puede sustituir temporalmente el dominio del remitente; verificar que la cuenta admite envíos transaccionales y que el mensaje llega realmente. No dar la entrega por garantizada.
-3. El propietario debe crear/verificar la cuenta de correo y guardar la clave SMTP directamente en Supabase. Los datos previstos para Brevo son `smtp-relay.brevo.com`, puerto `587` y el usuario SMTP que muestre su panel. La contraseña es una clave SMTP de Brevo, no su clave API ni la contraseña personal.
-4. El contacto de privacidad y la referencia a Brevo ya están publicados. Al activar las cuentas, actualizar la página de privacidad para reflejar su disponibilidad.
-5. Probar confirmación de correo, acceso, cierre de sesión, recuperación, favoritos, progreso y guías. El flujo PKCE requiere abrir el enlace en el navegador donde se inició la solicitud. El propietario establece sus propias credenciales; no las comparte en el chat.
-6. Cambiar `accountsEnabled` a `true` al preparar la prueba integral y verificar el despliegue. Si falla el correo o el acceso, volver a `false` hasta corregirlo. La activación no sustituye las pruebas.
-7. Al modificar configuración o módulos de cuentas, actualizar las versiones de importación para evitar la caché de GitHub Pages.
+1. Crear una cuenta desde la web y comprobar que Brevo entrega el mensaje de confirmación. El propietario establece su contraseña directamente en el navegador y no la comparte en el chat.
+2. Abrir el enlace en el mismo navegador donde se inició el registro (PKCE), comprobar el acceso y el cierre de sesión.
+3. Probar favoritos y progreso sincronizados, y las guías reservadas para usuarios autenticados.
+4. Probar recuperación y cambio de contraseña, también en el navegador que inició la solicitud.
+5. Si falla el correo o el acceso, volver a `accountsEnabled: false` hasta corregirlo. Al modificar módulos de cuentas, actualizar las versiones de importación para evitar la caché de GitHub Pages.
+
+## Configuración de correo
+
+- Mantener el proyecto sin gastos, según la decisión del propietario. Brevo Free ofrece 300 mensajes diarios según su documentación y el panel consultados. Sin dominio propio puede sustituir temporalmente el dominio del remitente; comprobar la entrega real.
+- Supabase: Authentication → Emails → SMTP Settings; servidor `smtp-relay.brevo.com`, puerto `587`, usuario SMTP del panel de Brevo y contraseña correspondiente a una clave SMTP. No usar la clave API ni la contraseña personal de Brevo.
+- El propietario guarda las credenciales directamente en Supabase. Nunca copiarlas al repositorio.
+- Brevo puede hacer caducar las claves después de 90 días de inactividad y en la fecha de vencimiento seleccionada. Revisar este punto si dejan de llegar mensajes.
+- Las plantillas y los asuntos están documentados en [Correos de Isótopo](../supabase/emails/README.md).
 
 ## Protección y contenido
 

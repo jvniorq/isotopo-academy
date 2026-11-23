@@ -4,6 +4,6 @@ export const config = Object.freeze({
  supabasePublishableKey: "sb_publishable_e2CkaMunf8-p5PvfA0P1Rw_tMHnugoV",
  siteUrl: "https://jvniorq.github.io/isotopo-academy/",
  privacyContact: "oswer9905@gmail.com",
- // Enable only after email delivery, privacy contact and account flows are verified.
- accountsEnabled: false
+ // SMTP and privacy contact are configured; verify the complete account flow after deployment.
+ accountsEnabled: true
 });
