@@ -17,7 +17,8 @@ export function startAnimations(){
  if(window.gsap&&window.ScrollTrigger){
   gsap.registerPlugin(ScrollTrigger);
   ctx=gsap.context(()=>{
-   gsap.from(".hero-copy > *",{y:22,opacity:0,duration:.85,stagger:.10,ease:"power2.out",clearProps:"all"});
+   const heroItems=main.querySelectorAll(".hero-copy > *");
+   if(heroItems.length)gsap.from(heroItems,{y:22,opacity:0,duration:.85,stagger:.10,ease:"power2.out",clearProps:"all"});
    main.querySelectorAll("[data-reveal]").forEach(el=>{
     gsap.from(el,{y:26,opacity:0,duration:.72,ease:"power2.out",clearProps:"all",scrollTrigger:{trigger:el,start:"top 94%",once:true}});
    });
