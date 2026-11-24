@@ -1,9 +1,16 @@
-import {config} from "./config.js?v=1.0.5";
+import {config} from "./config.js?v=1.0.7";
 export const authEnabled = config.accountsEnabled === true && /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(config.supabaseUrl) && config.supabasePublishableKey.length>20 && Boolean(config.privacyContact);
 let clientPromise,currentUser=null;
+function accountError(error,fallback){
+ if(error.status===429||["over_email_send_rate_limit","over_request_rate_limit"].includes(error.code))return new Error("Se han realizado demasiadas solicitudes. Espera unos minutos antes de volver a intentarlo.");
+ if(error.status>=500||error.code==="unexpected_failure")return new Error("El servicio de cuentas tiene un problema temporal. Inténtalo más tarde; no necesitas cambiar tus datos.");
+ if(error.name==="AuthRetryableFetchError")return new Error("No se pudo conectar con el servicio de cuentas. Comprueba tu conexión e inténtalo de nuevo.");
+ if(error.code==="weak_password")return new Error("Elige una contraseña única de al menos 12 caracteres.");
+ return new Error(fallback);
+}
 export const getUser=()=>currentUser;
 async function client(){
- if(!authEnabled)throw new Error("Las cuentas estarán disponibles próximamente.");
+ if(!authEnabled)throw new Error("El servicio de cuentas está temporalmente en mantenimiento.");
  if(!clientPromise)clientPromise=import("https://esm.sh/@supabase/supabase-js@2.119.2").then(({createClient})=>{
   const db=createClient(config.supabaseUrl,config.supabasePublishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:"pkce"}});
   db.auth.onAuthStateChange((event,session)=>{
@@ -22,21 +29,21 @@ export async function initAuth(){
 }
 export async function signIn(email,password){
  const {error}=await (await client()).auth.signInWithPassword({email,password});
- if(error)throw new Error("No se pudo iniciar sesión. Revisa tus datos y confirma tu correo.");
+ if(error)throw accountError(error,"No se pudo iniciar sesión. Revisa tus datos y confirma tu correo.");
 }
 export async function signUp(name,email,password){
  const {data,error}=await (await client()).auth.signUp({email,password,options:{data:{display_name:name},emailRedirectTo:config.siteUrl}});
- if(error)throw new Error("No se pudo crear la cuenta. Revisa tus datos o inténtalo más tarde.");
+ if(error)throw accountError(error,"No se pudo crear la cuenta. Revisa tus datos o inténtalo más tarde.");
  return Boolean(data.session);
 }
 export async function resetPassword(email){
  const {error}=await (await client()).auth.resetPasswordForEmail(email,{redirectTo:config.siteUrl+"?recovery=1"});
- if(error)throw new Error("No se pudo enviar la solicitud. Inténtalo más tarde.");
+ if(error)throw accountError(error,"No se pudo enviar la solicitud. Inténtalo más tarde.");
 }
 export async function updatePassword(password){
  if(!currentUser)throw new Error("Abre primero el enlace de recuperación de tu correo.");
  const {error}=await (await client()).auth.updateUser({password});
- if(error)throw new Error("No se pudo actualizar la contraseña.");
+ if(error)throw accountError(error,"No se pudo actualizar la contraseña.");
 }
 export async function signOut(){
  const {error}=await (await client()).auth.signOut();if(error)throw new Error("No se pudo cerrar la sesión.");

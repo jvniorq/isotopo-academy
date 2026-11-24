@@ -2,8 +2,8 @@ import {courses,areas,routes,areaFor,costLabel,filterCourses} from "./catalog.js
 import {icon,fieldArt} from "./graphics.js?v=1.0.5";
 import {esc,card,empty,pageTop,home,specialtiesPage,routesPage,readingPage} from "./ui.js?v=1.0.5";
 import {readStorage,writeStorage,startAnimations,stopAnimations,scrollTop,initMotion} from "./animations.js?v=1.0.6";
-import * as auth from "./auth.js?v=1.0.5";
-import {config} from "./config.js?v=1.0.5";
+import * as auth from "./auth.js?v=1.0.7";
+import {config} from "./config.js?v=1.0.7";
 
 const main=document.querySelector("#main");
 const knownIds=new Set(courses.map(c=>c.id));
@@ -63,7 +63,7 @@ function authPage(mode){
  const signup=mode==="registro",reset=mode==="recuperar",newPassword=mode==="nueva-clave";
  const title=signup?"Crea tu espacio.":reset?"Vuelve a conectar.":newPassword?"Una nueva contraseña.":"Qué bueno verte de nuevo.";
  const submit=signup?"Crear cuenta":reset?"Enviar enlace":newPassword?"Guardar contraseña":"Iniciar sesión";
- return '<section class="auth-page"><div class="auth-art"><p class="eyebrow">Tu conocimiento sigue creciendo</p><h1>Cada descubrimiento<br>abre una nueva<br>posibilidad.</h1><p>Conecta cursos, construye tu camino y sigue haciendo preguntas.</p>'+fieldArt("energia")+'</div><div class="auth-form-wrap"><form class="auth-form" id="account-form" data-mode="'+mode+'"><h2>'+title+'</h2><p>'+(signup?'Comienza una trayectoria que sea tuya.':reset?'Te enviaremos un enlace para recuperar el acceso.':newPassword?'Elige una contraseña única de al menos 12 caracteres.':'Continúa donde dejaste tu curiosidad.')+'</p>'+(!auth.authEnabled?'<div class="availability-note"><strong>Las cuentas estarán disponibles próximamente.</strong><br>Puedes explorar los 40 cursos y guardar favoritos en este navegador desde ahora.</div>':'')+
+ return '<section class="auth-page"><div class="auth-art"><p class="eyebrow">Tu conocimiento sigue creciendo</p><h1>Cada descubrimiento<br>abre una nueva<br>posibilidad.</h1><p>Conecta cursos, construye tu camino y sigue haciendo preguntas.</p>'+fieldArt("energia")+'</div><div class="auth-form-wrap"><form class="auth-form" id="account-form" data-mode="'+mode+'"><h2>'+title+'</h2><p>'+(signup?'Comienza una trayectoria que sea tuya.':reset?'Te enviaremos un enlace para recuperar el acceso.':newPassword?'Elige una contraseña única de al menos 12 caracteres.':'Continúa donde dejaste tu curiosidad.')+'</p>'+(!auth.authEnabled?'<div class="availability-note"><strong>Las cuentas están temporalmente en mantenimiento.</strong><br>Puedes explorar los 40 cursos y guardar favoritos en este navegador desde ahora.</div>':'')+
  (signup?'<label>Nombre<input name="name" autocomplete="given-name" required maxlength="80" placeholder="Tu nombre"></label>':'')+
  (!newPassword?'<label>Correo electrónico<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="tu@correo.com"></label>':'')+
  (!reset?'<label>Contraseña<div class="password-wrap"><input id="account-password" name="password" type="password" autocomplete="'+(signup||newPassword?'new-password':'current-password')+'" required minlength="'+(signup||newPassword?12:1)+'" maxlength="128" placeholder="'+(signup||newPassword?'Al menos 12 caracteres':'Tu contraseña')+'"><button type="button" class="icon-button" data-password-toggle aria-label="Mostrar contraseña" aria-pressed="false">'+icon("eye")+'</button></div></label>':'')+

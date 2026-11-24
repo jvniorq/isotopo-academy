@@ -1,6 +1,6 @@
 # Activar cuentas reales sin instalar nada
 
-La web pública funciona desde GitHub Pages. El catálogo, filtros, rutas y favoritos locales están activos. La base Supabase y el SMTP de Brevo están configurados. El registro se habilita para la prueba integral; falta comprobar la entrega real y los flujos con una cuenta.
+La web pública funciona desde GitHub Pages. El catálogo, filtros, rutas y favoritos locales están activos. La base Supabase y el SMTP de Brevo están configurados. El registro está temporalmente deshabilitado tras detectar un rechazo de autenticación SMTP durante la prueba real.
 
 ## Estado verificado — 23 de noviembre de 2026
 
@@ -12,16 +12,16 @@ La web pública funciona desde GitHub Pages. El catálogo, filtros, rutas y favo
 - Site URL: https://jvniorq.github.io/isotopo-academy/
 - Redirecciones permitidas: esa misma URL y https://jvniorq.github.io/isotopo-academy/?recovery=1
 - Email/Password habilitado en Supabase, confirmación de correo activada y longitud mínima de contraseña: 12 caracteres.
-- Remitente verificado en Brevo: **Isótopo Academy**, correo autorizado por el propietario: oswer9905@gmail.com. La cuenta dispone de 300 envíos diarios. Identidad y teléfono verificados; el propietario creó la clave SMTP y la guardó directamente en Supabase. El panel confirma SMTP activado y contraseña almacenada. La entrega real aún debe probarse.
+- Remitente verificado en Brevo: **Isótopo Academy**, correo autorizado por el propietario: oswer9905@gmail.com. La cuenta dispone de 300 envíos diarios. Identidad y teléfono verificados; el propietario creó la clave SMTP y la guardó directamente en Supabase. El panel confirma SMTP activado y contraseña almacenada. La prueba de registro devolvió el error SMTP 535: autenticación fallida. No se ha comprobado la entrega.
 - Contacto de privacidad publicado con autorización: oswer9905@gmail.com.
 - URL y clave publicable guardadas en [config.js](../js/config.js). No son secretos.
 - Plantillas de confirmación y recuperación aplicadas en Supabase y revisadas en su previsualización.
 - Brevo: seguimiento anónimo seleccionado y consentimiento por contacto activado; no se rastrean contactos cuyo consentimiento es desconocido. Revisar también los enlaces del mensaje recibido.
-- `accountsEnabled: true` habilita los formularios para la prueba integral. Si falla la entrega o el acceso, volver a `false` hasta corregirlo. Esta bandera controla la interfaz; la protección real de los datos corresponde a Auth, los permisos SQL y RLS.
+- `accountsEnabled: false` mantiene los formularios en mantenimiento hasta corregir el correo. Si falla la entrega o el acceso, volver a `false` hasta corregirlo. Esta bandera controla la interfaz; la protección real de los datos corresponde a Auth, los permisos SQL y RLS.
 
 ## Validación pendiente
 
-1. Crear una cuenta desde la web y comprobar que Brevo entrega el mensaje de confirmación. El propietario establece su contraseña directamente en el navegador y no la comparte en el chat.
+1. Corregir la credencial SMTP de Brevo, comprobar que la clave figure activa en su panel y guardarla directamente en Supabase. Habilitar la prueba con `accountsEnabled: true`, crear una cuenta desde la web y comprobar que Brevo entrega el mensaje de confirmación. El propietario establece su contraseña directamente en el navegador y no la comparte en el chat.
 2. Abrir el enlace en el mismo navegador donde se inició el registro (PKCE), comprobar el acceso y el cierre de sesión.
 3. Probar favoritos y progreso sincronizados, y las guías reservadas para usuarios autenticados.
 4. Probar recuperación y cambio de contraseña, también en el navegador que inició la solicitud.

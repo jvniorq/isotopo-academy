@@ -20,7 +20,7 @@ Plataforma en español para explorar 40 cursos relacionados con ingeniería nucl
 
 El proyecto Supabase ya está creado y contiene 40 cursos y 40 guías de estudio. Las políticas de acceso se probaron en la base real: cada usuario accede solo a su aprendizaje y los visitantes no pueden leer las guías mediante la API. Las URLs de confirmación y recuperación están configuradas y la contraseña exige al menos 12 caracteres.
 
-El SMTP de Brevo está configurado, las plantillas de correo están aplicadas y el contacto de privacidad está publicado. El registro se habilita **para la prueba integral**: falta comprobar la entrega y los flujos completos con una cuenta. Si falla la prueba, se deshabilitará el registro hasta corregirlo. Consulta [Activar cuentas](docs/ACTIVAR-CUENTAS.md).
+El SMTP de Brevo está configurado, las plantillas de correo están aplicadas y el contacto de privacidad está publicado. El registro está **temporalmente deshabilitado**: la prueba real encontró un rechazo de autenticación SMTP de Brevo (535). Debe corregirse la clave SMTP y verificar la entrega antes de continuar las pruebas de cuenta. Consulta [Activar cuentas](docs/ACTIVAR-CUENTAS.md).
 
 Los cursos originales pertenecen a sus instituciones. Isótopo organiza metadatos y guías editoriales; no vende acceso, no reproduce cursos completos ni emite certificados.
 
